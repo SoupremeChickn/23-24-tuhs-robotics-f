@@ -18,6 +18,13 @@ class C_Team {
             int right_stick_x = inputs[1];
             int right_stick_y = inputs[2];
 
+            front_left.move_voltage(MOVE_VOLT * left_stick_y);
+            front_right.move_voltage(MOVE_VOLT * -right_stick_y);
+            back_left.move_voltage(MOVE_VOLT * left_stick_y);
+            back_right.move_voltage(MOVE_VOLT * -right_stick_y);
+
+
+            /*
             int right_motors = left_stick_y + left_stick_x;
             int left_motors = left_stick_y - left_stick_x;
 
@@ -25,6 +32,7 @@ class C_Team {
             front_left.move_voltage(MOVE_VOLT * (-left_motors + right_stick_x));
             back_right.move_voltage(MOVE_VOLT * (left_motors + right_stick_x));
             back_left.move_voltage(MOVE_VOLT * (right_motors + right_stick_x));
+            */
         }
 
         void acorn_grab(int inputs[]) {

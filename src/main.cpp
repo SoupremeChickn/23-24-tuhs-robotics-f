@@ -28,7 +28,7 @@ int inputs[16];
 
 using namespace std::chrono_literals;
 
-int team = 0;
+int team = 3;
 
 void get_inputs() {
     if (auton) {
@@ -139,19 +139,21 @@ void autonomous() {
             case 2:
                 break;
             case 3:
+                C_team.drivetrain(inputs);
                 break;
         }
         
         auto t2 = clock.now();
 		std::chrono::milliseconds ms_adjust = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1);
 		std::cout << "Auton control took " << ms_adjust.count() << " ms" << std::endl;
-		pros::delay(11); //number should be tweeked for different autons
+		pros::delay(10); //number should be tweeked for different autons
     }
     auton = false;
 }
 
 void opcontrol() {
     op = true;
+    auton = false;
     VirtualController vc(&drive_con, false);
     std::chrono::high_resolution_clock clock;
 
